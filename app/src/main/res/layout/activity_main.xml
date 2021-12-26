@@ -4,15 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/military_brown"
     tools:context=".view.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/mainTitle"
+        android:text="סמלתו"
+        android:layout_marginTop="128dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/MainHeader" />
+
+    <TextView
+        android:id="@+id/createSchedule"
+        android:text="צור לוז שמירות"
+        app:layout_constraintTop_toBottomOf="@id/mainTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/MainTextButton" />
+    <TextView
+        android:id="@+id/importSchedule"
+        android:text="יבא לוז שמירות"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/createSchedule"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/MainTextButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
