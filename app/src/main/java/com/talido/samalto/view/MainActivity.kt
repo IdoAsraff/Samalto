@@ -1,7 +1,8 @@
-package com.talido.samalto
+package com.talido.samalto.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.talido.samalto.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
