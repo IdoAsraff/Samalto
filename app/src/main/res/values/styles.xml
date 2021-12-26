@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="MainHeader">
-        <item name="android:textSize">40sp</item>
+    <style name="MilitaryText">
         <item name="android:textColor">@color/military_yellow</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="MainTextButton">
-        <item name="android:textColor">@color/military_yellow</item>
+    <style name="MainHeader" parent="MilitaryText">
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="SecondaryHeader" parent="MilitaryText">
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="MainTextButton" parent="MilitaryText">
         <item name="android:textSize">24sp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="SmallTextButton" parent="MilitaryText">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="MilitaryScreen">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/military_brown</item>
     </style>
 </resources>
