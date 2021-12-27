@@ -1,31 +1,36 @@
-package com.talido.samalto.view
+package com.talido.samalto.view.fragments
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.TimePicker
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.talido.samalto.R
-import com.talido.samalto.databinding.ActivityScheduleStartBinding
+import com.talido.samalto.databinding.FragmentScheduleStartBinding
 import java.util.*
 
-class ScheduleStartActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetListener,
+class ScheduleStartFragment : Fragment(), TimePickerDialog.OnTimeSetListener,
     DatePickerDialog.OnDateSetListener {
     private val selectedStart: Calendar = Calendar.getInstance()
-    lateinit var binding: ActivityScheduleStartBinding
+    lateinit var binding: FragmentScheduleStartBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityScheduleStartBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentScheduleStartBinding.inflate(layoutInflater)
 
         binding.schedStartInput.setOnClickListener {
             val now = Calendar.getInstance()
             DatePickerDialog(
-                this,
+                requireContext(),
                 this,
                 now[Calendar.YEAR],
                 now[Calendar.MONTH],
@@ -34,14 +39,13 @@ class ScheduleStartActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetLis
         }
 
         binding.prev.setOnClickListener {
-            finish()
+            //back
         }
         binding.next.setOnClickListener {
-            val intent = Intent(this, CreatePostsActivity::class.java).apply {
-                putExtra("scheduleStartCalendar", selectedStart)
-            }
-            startActivity(intent)
+            findNavController().navigate(ScheduleStartFragmentDirections.actionScheduleStartFragmentToCreatePostsFragment())
         }
+
+        return binding.root
     }
 
     override fun onDateSet(
@@ -55,7 +59,7 @@ class ScheduleStartActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetLis
         selectedStart[Calendar.MONTH] = selectedMonth
         selectedStart[Calendar.DAY_OF_MONTH] = selectedDay
         TimePickerDialog(
-            this@ScheduleStartActivity,
+            requireContext(),
             this,
             now[Calendar.HOUR_OF_DAY],
             now[Calendar.MINUTE],

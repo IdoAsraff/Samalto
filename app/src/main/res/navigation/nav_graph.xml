@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/scheduleStartFragment">
+
+    <fragment
+        android:id="@+id/scheduleStartFragment"
+        android:name="com.talido.samalto.view.fragments.ScheduleStartFragment"
+        android:label="fragment_schedule_start"
+        tools:layout="@layout/fragment_schedule_start" >
+        <action
+            android:id="@+id/action_scheduleStartFragment_to_createPostsFragment"
+            app:destination="@id/createPostsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/guardsAmountFragment"
+        android:name="com.talido.samalto.view.fragments.GuardsAmountFragment"
+        android:label="fragment_guards_amount"
+        tools:layout="@layout/fragment_guards_amount" >
+        <action
+            android:id="@+id/action_guardsAmountFragment_to_showGeneratedScheduleFragment"
+            app:destination="@id/showGeneratedScheduleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/showGeneratedScheduleFragment"
+        android:name="com.talido.samalto.view.fragments.ShowGeneratedScheduleFragment"
+        android:label="fragment_show_generated_schedule"
+        tools:layout="@layout/fragment_show_generated_schedule" />
+
+    <fragment
+        android:id="@+id/createPostsFragment"
+        android:name="com.talido.samalto.view.fragments.CreatePostsFragment"
+        android:label="fragment_create_posts"
+        tools:layout="@layout/fragment_create_posts" >
+        <action
+            android:id="@+id/action_createPostsFragment_to_guardsAmountFragment"
+            app:destination="@id/guardsAmountFragment" />
+    </fragment>
+
+</navigation>

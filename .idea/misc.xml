@@ -9,9 +9,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/activity_create_posts.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/activity_guards_amount.xml" value="0.2" />
         <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/activity_schedule.xml" value="0.275" />
         <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/activity_schedule_start.xml" value="0.18" />
         <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/activity_show_generated_schedule.xml" value="0.22" />
+        <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/fragment_create_posts.xml" value="0.22" />
+        <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/fragment_guards_amount.xml" value="0.23385416666666667" />
+        <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/fragment_schedule_start.xml" value="0.175390625" />
+        <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/fragment_show_generated_schedule.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/ido1a/Documents/projs/samalto/app/src/main/res/layout/main_fragment.xml" value="0.264453125" />
       </map>
     </option>
   </component>
