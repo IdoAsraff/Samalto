@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.talido.samalto.databinding.FragmentCreatePostsBinding
+import com.talido.samalto.view.ScheduleActivity
 
 class CreatePostsFragment : Fragment() {
     private lateinit var binding: FragmentCreatePostsBinding
