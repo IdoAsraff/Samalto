@@ -1,10 +1,10 @@
 package com.talido.samalto.model.data.assigned
 
-import java.time.LocalTime
+import java.util.*
 
 data class AssignedShift(
-    val post: AssignedPost,
-    val startTime: LocalTime,
-    val endTime: LocalTime,
-    val assignedGuard: AssignedGuard
+    val postName: String,
+    val startTime: Calendar,
+    val endTime: Calendar,
+    val assignedGuardName: String
 )

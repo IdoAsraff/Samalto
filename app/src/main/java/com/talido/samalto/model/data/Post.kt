@@ -1,11 +1,11 @@
 package com.talido.samalto.model.data
 
-import java.time.LocalTime
+import java.util.*
 
 class Post(val name: String) {
     val shifts: MutableList<Shift> = mutableListOf()
 
-    fun addShift(startTime: LocalTime, endTime: LocalTime) {
-        shifts.add(Shift(this, startTime, endTime))
+    fun addShift(startTime: Calendar, endTime: Calendar) {
+        shifts.add(Shift(this.name, startTime, endTime))
     }
 }

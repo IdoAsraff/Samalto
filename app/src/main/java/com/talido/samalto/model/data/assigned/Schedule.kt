@@ -10,7 +10,7 @@ class Schedule(posts: List<Post>, guards: List<Guard>) {
 
     fun assign(guard: Guard, shift: Shift) {
         val assignedGuard = guards.find { it.name == guard.name }!!
-        posts.find { it.name == shift.post.name }!!
+        posts.find { it.name == shift.postName }!!
             .addShift(shift.startTime, shift.endTime, assignedGuard)
     }
 
@@ -19,7 +19,7 @@ class Schedule(posts: List<Post>, guards: List<Guard>) {
         assignedGuard.shifts.removeIf {
             it.startTime.compareTo(shift.startTime) == 0 && it.endTime.compareTo(shift.endTime) == 0
         }
-        posts.find { it.name == shift.post.name }!!
+        posts.find { it.name == shift.postName }!!
             .shifts.removeIf {
                 it.startTime.compareTo(shift.startTime) == 0 && it.endTime.compareTo(shift.endTime) == 0
             }
