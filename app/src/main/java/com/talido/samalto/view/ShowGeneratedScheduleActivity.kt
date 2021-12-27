@@ -9,5 +9,9 @@ class ShowGeneratedScheduleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityShowGeneratedScheduleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.prev.setOnClickListener {
+            finish()
+        }
     }
 }

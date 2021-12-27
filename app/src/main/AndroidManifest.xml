@@ -10,6 +10,9 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.Samalto">
         <activity
+            android:name=".view.GuardsAmountActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.ShowGeneratedScheduleActivity"
             android:exported="false" />
         <activity android:name=".view.CreatePostsActivity" />
