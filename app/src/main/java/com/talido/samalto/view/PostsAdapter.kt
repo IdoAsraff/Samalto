@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.talido.samalto.R
 import com.talido.samalto.model.data.Post
@@ -31,15 +32,9 @@ class PostsAdapter(val context: Context, private var posts: MutableList<Post>) :
             } else {
                 postName.setText(posts[position].name)
                 sufferingLevel.setText(posts[position].sufferingLevel.toString())
+                shiftList.layoutManager = LinearLayoutManager(context)
                 shiftList.adapter = ShiftAdapter(context, posts[position].shifts)
-
-                postCard.setOnClickListener {
-                    val isVisible = shiftList.visibility == View.VISIBLE
-                    shiftList.visibility = if (isVisible) View.GONE else View.VISIBLE
-                    this@PostsAdapter.notifyDataSetChanged()
-                }
             }
-
         }
     }
 

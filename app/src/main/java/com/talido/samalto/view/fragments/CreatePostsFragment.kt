@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.talido.samalto.databinding.FragmentCreatePostsBinding
 import com.talido.samalto.model.data.Post
 import com.talido.samalto.view.PostsAdapter
+import java.util.*
 
 class CreatePostsFragment : Fragment() {
     private lateinit var binding: FragmentCreatePostsBinding
@@ -30,8 +31,15 @@ class CreatePostsFragment : Fragment() {
         }
 
         binding.postsList.layoutManager = LinearLayoutManager(this.requireContext())
-        binding.postsList.adapter = PostsAdapter(binding.root.context, mutableListOf(Post("פטרול", 3), Post("כפתורים", 4)))
-        (binding.postsList.adapter as PostsAdapter).notifyDataSetChanged()
+        val testList = mutableListOf(Post("פטרול", 3), Post("כפתורים", 4))
+        val startTime = Calendar.getInstance()
+        val endTime = Calendar.getInstance()
+        startTime[Calendar.HOUR_OF_DAY] = 10
+        startTime[Calendar.MINUTE] = 10
+        endTime[Calendar.HOUR_OF_DAY] = 11
+        endTime[Calendar.MINUTE] = 11
+        testList[0].addShift(startTime, endTime)
+        binding.postsList.adapter = PostsAdapter(binding.root.context, testList)
         return binding.root
     }
 }
