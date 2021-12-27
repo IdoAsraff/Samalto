@@ -14,11 +14,13 @@
         android:text="מתי מתחילות השמירות?"
         style="@style/SecondaryHeader"/>
 
-    <TimePicker
+    <EditText
+        android:id="@+id/schedStartInput"
+        android:enabled="true"
+        android:inputType="none"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/schedStartInput"
-        android:timePickerMode="spinner"
+        android:width="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
