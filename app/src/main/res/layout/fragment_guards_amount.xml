@@ -31,7 +31,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/textColorPrimary"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:maxLength="2"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

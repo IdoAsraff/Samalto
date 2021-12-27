@@ -22,13 +22,20 @@
         <action
             android:id="@+id/action_guardsAmountFragment_to_showGeneratedScheduleFragment"
             app:destination="@id/showGeneratedScheduleFragment" />
+        <action
+            android:id="@+id/action_guardsAmountFragment_to_createPostsFragment"
+            app:destination="@id/createPostsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/showGeneratedScheduleFragment"
         android:name="com.talido.samalto.view.fragments.ShowGeneratedScheduleFragment"
         android:label="fragment_show_generated_schedule"
-        tools:layout="@layout/fragment_show_generated_schedule" />
+        tools:layout="@layout/fragment_show_generated_schedule" >
+        <action
+            android:id="@+id/action_showGeneratedScheduleFragment_to_guardsAmountFragment"
+            app:destination="@id/guardsAmountFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/createPostsFragment"
@@ -38,6 +45,9 @@
         <action
             android:id="@+id/action_createPostsFragment_to_guardsAmountFragment"
             app:destination="@id/guardsAmountFragment" />
+        <action
+            android:id="@+id/action_createPostsFragment_to_scheduleStartFragment"
+            app:destination="@id/scheduleStartFragment" />
     </fragment>
 
 </navigation>
