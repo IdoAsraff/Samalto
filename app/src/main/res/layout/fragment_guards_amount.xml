@@ -7,6 +7,58 @@
     android:background="@color/background"
     tools:context=".view.fragments.GuardsAmountFragment">
 
+    <Button
+        android:id="@+id/next"
+        style="@style/NavigationTextButton"
+        android:enabled="false"
+        android:text="הבא"
+        android:textColor="@color/textColorDisabled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/prev"
+        style="@style/NavigationTextButton"
+        android:text="אחורה"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guardNamesTag">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <GridLayout
+                android:id="@+id/guardNamesGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:alignmentMode="alignBounds"
+                android:columnCount="3"
+                android:padding="4dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/guardNamesTag"
+        style="@style/NormalTextView"
+        android:layout_margin="13dp"
+        android:text="מה שמות השומרים?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+
     <TextView
         android:id="@+id/guardsStartTitle"
         style="@style/LeadTitle"
@@ -17,6 +69,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="100dp"
         android:layout_height="55dp"
@@ -27,27 +80,13 @@
         app:layout_constraintTop_toBottomOf="@+id/guardsStartTitle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/schedStartInput"
+            android:id="@+id/guardAmountInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/textColorPrimary"
             android:gravity="center_horizontal"
             android:inputType="number"
-            android:maxLength="2"/>
+            android:maxLength="2"
+            android:textColor="@color/textColorPrimary" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/next"
-        android:text="הבא"
-        style="@style/NavigationTextButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/prev"
-        android:text="אחורה"
-        style="@style/NavigationTextButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

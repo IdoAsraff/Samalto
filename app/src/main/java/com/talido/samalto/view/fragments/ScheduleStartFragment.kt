@@ -2,7 +2,6 @@ package com.talido.samalto.view.fragments
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.talido.samalto.R
 import com.talido.samalto.databinding.FragmentScheduleStartBinding
+import com.talido.samalto.view.ScheduleActivity
 import java.util.*
 
 class ScheduleStartFragment : Fragment(), TimePickerDialog.OnTimeSetListener,
@@ -32,7 +32,6 @@ class ScheduleStartFragment : Fragment(), TimePickerDialog.OnTimeSetListener,
         } else {
             binding.next.isEnabled = true
             binding.next.setTextColor(resources.getColor(R.color.textColorPrimary))
-            binding.next.setTypeface(null, Typeface.BOLD)
         }
 
         binding.schedStartInput.setOnClickListener {
@@ -47,9 +46,10 @@ class ScheduleStartFragment : Fragment(), TimePickerDialog.OnTimeSetListener,
         }
 
         binding.prev.setOnClickListener {
-
+            requireActivity().finish()
         }
         binding.next.setOnClickListener {
+            (activity as ScheduleActivity).startTime = Optional.of(selectedStart)
             findNavController().navigate(ScheduleStartFragmentDirections.actionScheduleStartFragmentToCreatePostsFragment())
         }
 
@@ -81,6 +81,5 @@ class ScheduleStartFragment : Fragment(), TimePickerDialog.OnTimeSetListener,
         binding.schedStartInput.setText("$hour:${minute.toString().padStart(2, '0')}")
         binding.next.isEnabled = true
         binding.next.setTextColor(resources.getColor(R.color.textColorPrimary))
-        binding.next.setTypeface(null, Typeface.BOLD)
     }
 }

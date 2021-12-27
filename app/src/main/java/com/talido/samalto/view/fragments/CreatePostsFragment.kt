@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.talido.samalto.databinding.FragmentCreatePostsBinding
+import com.talido.samalto.view.ScheduleActivity
 import com.talido.samalto.model.data.Post
 import com.talido.samalto.view.PostsAdapter
 import java.util.*
