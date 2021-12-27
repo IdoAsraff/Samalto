@@ -2,7 +2,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/MilitaryScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".view.CreatePostsActivity">
+
+    <Button
+        android:id="@+id/next"
+        android:text="הבא"
+        android:enabled="false"
+        style="@style/NavigationTextButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/prev"
+        android:text="אחורה"
+        style="@style/NavigationTextButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
+import com.talido.samalto.R
 import com.talido.samalto.databinding.ActivityScheduleStartBinding
 import java.util.*
 
@@ -67,6 +68,7 @@ class ScheduleStartActivity : AppCompatActivity(), TimePickerDialog.OnTimeSetLis
         selectedStart[Calendar.MINUTE] = minute
         binding.schedStartInput.setText("$hour:$minute")
         binding.next.isEnabled = true
+        binding.next.setTextColor(resources.getColor(R.color.textColorPrimary))
         binding.next.setTypeface(null, Typeface.BOLD)
     }
 }

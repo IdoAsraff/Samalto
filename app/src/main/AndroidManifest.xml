@@ -10,12 +10,12 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.Samalto">
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.ShowGeneratedScheduleActivity"
             android:exported="false" />
         <activity android:name=".view.CreatePostsActivity" />
         <activity android:name=".view.ScheduleStartActivity" />
         <activity
-            android:name=".view.ShowGeneratedScheduleActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
