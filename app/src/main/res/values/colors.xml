@@ -12,6 +12,7 @@
     <color name="textColorDisabled">#61000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#d6cbb2</color>
+    <color name="backgroundDark">#F8E2AF</color>
     <color name="transparent">#00000000</color>
     <color name="error">#FF0000</color>
 
