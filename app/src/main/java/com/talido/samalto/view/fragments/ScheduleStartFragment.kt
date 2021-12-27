@@ -17,7 +17,7 @@ import java.util.*
 
 class ScheduleStartFragment : Fragment(), TimePickerDialog.OnTimeSetListener,
     DatePickerDialog.OnDateSetListener {
-    private val selectedStart: Calendar = Calendar.getInstance()
+    private lateinit var selectedStart: Calendar
     lateinit var binding: FragmentScheduleStartBinding
 
     override fun onCreateView(
@@ -26,6 +26,14 @@ class ScheduleStartFragment : Fragment(), TimePickerDialog.OnTimeSetListener,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentScheduleStartBinding.inflate(layoutInflater)
+
+        if (!this::selectedStart.isInitialized) {
+            selectedStart = Calendar.getInstance()
+        } else {
+            binding.next.isEnabled = true
+            binding.next.setTextColor(resources.getColor(R.color.textColorPrimary))
+            binding.next.setTypeface(null, Typeface.BOLD)
+        }
 
         binding.schedStartInput.setOnClickListener {
             val now = Calendar.getInstance()
@@ -39,7 +47,7 @@ class ScheduleStartFragment : Fragment(), TimePickerDialog.OnTimeSetListener,
         }
 
         binding.prev.setOnClickListener {
-            //back
+
         }
         binding.next.setOnClickListener {
             findNavController().navigate(ScheduleStartFragmentDirections.actionScheduleStartFragmentToCreatePostsFragment())
@@ -70,7 +78,7 @@ class ScheduleStartFragment : Fragment(), TimePickerDialog.OnTimeSetListener,
     override fun onTimeSet(view: TimePicker?, hour: Int, minute: Int) {
         selectedStart[Calendar.HOUR_OF_DAY] = hour
         selectedStart[Calendar.MINUTE] = minute
-        binding.schedStartInput.setText("$hour:$minute")
+        binding.schedStartInput.setText("$hour:${minute.toString().padStart(2, '0')}")
         binding.next.isEnabled = true
         binding.next.setTextColor(resources.getColor(R.color.textColorPrimary))
         binding.next.setTypeface(null, Typeface.BOLD)
