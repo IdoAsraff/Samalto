@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MilitaryScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ShowGeneratedScheduleActivity">
+
+    <TextView
+        android:id="@+id/yourScheduleText"
+        style="@style/SecondaryHeader"
+        android:layout_marginTop="64dp"
+        android:text="לוז השמירות שלכם:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/generatedScheduleText"
+        style="@style/MilitaryText"
+        android:layout_width="match_parent"
+        android:background="#6DFFB219"
+        android:layout_height="434dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yourScheduleText" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="horizontal"
+        style="?android:attr/buttonBarStyle"
+        app:layout_constraintTop_toBottomOf="@+id/generatedScheduleText">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="50dp"
+            android:text="שתף"
+            android:textSize="16sp"
+            android:textColor="@color/military_yellow"
+            android:background="@android:color/transparent"
+            style="?android:attr/buttonBarButtonStyle"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="3dp"
+            android:layout_height="50dp"
+            android:text="העתק"
+            android:textSize="16sp"
+            android:textColor="@color/military_yellow"
+            android:background="@android:color/transparent"
+            style="?android:attr/buttonBarButtonStyle" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="3dp"
+            android:layout_height="50dp"
+            android:text="שבץ מחדש"
+            android:textSize="16sp"
+            android:textColor="@color/military_yellow"
+            android:background="@android:color/transparent"
+            style="?android:attr/buttonBarButtonStyle" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
