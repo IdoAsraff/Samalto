@@ -6,6 +6,6 @@ class Post(val name: String) {
     val shifts: MutableList<Shift> = mutableListOf()
 
     fun addShift(startTime: Calendar, endTime: Calendar) {
-        shifts.add(Shift(this, startTime, endTime))
+        shifts.add(Shift(this.name, startTime, endTime))
     }
 }

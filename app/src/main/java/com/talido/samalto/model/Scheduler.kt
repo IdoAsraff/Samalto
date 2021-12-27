@@ -7,12 +7,11 @@ import com.talido.samalto.model.data.assigned.Schedule
 import com.talido.samalto.model.data.assigned.ShiftAdditionException
 import java.lang.Integer.max
 import java.lang.Integer.min
-import java.util.*
 
 class Scheduler {
     @ExperimentalStdlibApi
-    fun schedule(startTime: Calendar, posts: List<Post>, guards: List<Guard>): Schedule {
-        val schedule = Schedule(startTime, posts, guards)
+    fun schedule(posts: List<Post>, guards: List<Guard>): Schedule {
+        val schedule = Schedule(posts, guards)
 
         for (post in posts) {
             for (shift in post.shifts) {

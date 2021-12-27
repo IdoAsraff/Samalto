@@ -11,7 +11,7 @@ class AssignedPost(val name: String) {
             throw ShiftAdditionException()
         }
 
-        val assignedShift = AssignedShift(this, startTime, endTime, guard)
+        val assignedShift = AssignedShift(this.name, startTime, endTime, guard.name)
         shifts.add(assignedShift)
 
         guard.shifts.add(guard.shifts.indexOf(shiftBefore) + 1, assignedShift)

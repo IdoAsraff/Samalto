@@ -12,7 +12,7 @@ class DescriptionTextCreator {
             }
             for (shift in guard.shifts) {
                 append(
-                    "  ${shift.post.name}: ${shiftTimeToString(shift.startTime)} - ${
+                    "  ${shift.postName}: ${shiftTimeToString(shift.startTime)} - ${
                         shiftTimeToString(
                             shift.endTime
                         )
@@ -30,7 +30,7 @@ class DescriptionTextCreator {
             }
             for (shift in post.shifts) {
                 append(
-                    "  ${shift.assignedGuard.name}: ${shiftTimeToString(shift.startTime)} - ${
+                    "  ${shift.assignedGuardName}: ${shiftTimeToString(shift.startTime)} - ${
                         shiftTimeToString(
                             shift.endTime
                         )

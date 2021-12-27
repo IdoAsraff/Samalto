@@ -3,15 +3,14 @@ package com.talido.samalto.model.data.assigned
 import com.talido.samalto.model.data.Guard
 import com.talido.samalto.model.data.Post
 import com.talido.samalto.model.data.Shift
-import java.util.*
 
-class Schedule(val startTime: Calendar, posts: List<Post>, guards: List<Guard>) {
+class Schedule(posts: List<Post>, guards: List<Guard>) {
     val posts: List<AssignedPost> = posts.map { AssignedPost(it.name) }
     val guards: List<AssignedGuard> = guards.map { AssignedGuard(it.name) }
 
     fun assign(guard: Guard, shift: Shift) {
         val assignedGuard = guards.find { it.name == guard.name }!!
-        posts.find { it.name == shift.post.name }!!
+        posts.find { it.name == shift.postName }!!
             .addShift(shift.startTime, shift.endTime, assignedGuard)
     }
 
@@ -20,7 +19,7 @@ class Schedule(val startTime: Calendar, posts: List<Post>, guards: List<Guard>) 
         assignedGuard.shifts.removeIf {
             it.startTime.compareTo(shift.startTime) == 0 && it.endTime.compareTo(shift.endTime) == 0
         }
-        posts.find { it.name == shift.post.name }!!
+        posts.find { it.name == shift.postName }!!
             .shifts.removeIf {
                 it.startTime.compareTo(shift.startTime) == 0 && it.endTime.compareTo(shift.endTime) == 0
             }
