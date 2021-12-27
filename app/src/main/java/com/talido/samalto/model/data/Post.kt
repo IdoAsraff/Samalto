@@ -2,7 +2,7 @@ package com.talido.samalto.model.data
 
 import java.util.*
 
-class Post(val name: String, var sufferingLevel: Int) {
+class Post(var name: String = "", var sufferingLevel: Int=0) {
     val shifts: MutableList<Shift> = mutableListOf()
 
     fun addShift(startTime: Calendar, endTime: Calendar) {

@@ -5,13 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.cardview.widget.CardView
+import androidx.core.widget.addTextChangedListener
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.talido.samalto.R
 import com.talido.samalto.model.data.Post
 
-class PostsAdapter(val context: Context, private var posts: MutableList<Post>) :
+class PostsAdapter(val context: Context, var posts: MutableList<Post>) :
     RecyclerView.Adapter<PostHolder>() {
     init {
         posts.add(Post("", 0))
@@ -23,19 +26,23 @@ class PostsAdapter(val context: Context, private var posts: MutableList<Post>) :
     }
 
     override fun onBindViewHolder(postHolder: PostHolder, position: Int) {
-        with(postHolder) {
-            // If this is the last item, do stuff
-            if (position == posts.size - 1) {
-                postName.setText("")
-                sufferingLevel.setText("")
-                postName.hint = "הכנס שם עמדה..."
-            } else {
-                postName.setText(posts[position].name)
-                sufferingLevel.setText(posts[position].sufferingLevel.toString())
-                shiftList.layoutManager = LinearLayoutManager(context)
-                shiftList.adapter = ShiftAdapter(context, posts[position].shifts)
-            }
+        // If this is the last item, do stuff
+        if (position == posts.size - 1) {
+            postHolder.bindEmpty(this)
+        } else {
+            postHolder.bindPost(posts[position], this)
         }
+
+        postHolder.postName.doAfterTextChanged {
+            posts[position].name = it.toString()
+        }
+        postHolder.sufferingLevel.doAfterTextChanged {
+            posts[position].sufferingLevel = it.toString().toInt()
+        }
+    }
+
+    fun updatePosts() {
+
     }
 
     override fun getItemCount(): Int {
@@ -48,4 +55,30 @@ class PostHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val sufferingLevel: EditText = itemView.findViewById(R.id.sufferingLevel)
     val postName: EditText = itemView.findViewById(R.id.postName)
     val shiftList: RecyclerView = itemView.findViewById(R.id.shiftsList)
+    val addShift: ImageView = itemView.findViewById(R.id.addPost)
+    var isExpanded = false
+
+    fun bindPost(post: Post, adapter: PostsAdapter) {
+        postName.setText(post.name)
+        sufferingLevel.setText(post.sufferingLevel.toString())
+        shiftList.layoutManager = LinearLayoutManager(postCard.context)
+        shiftList.adapter = ShiftAdapter(postCard.context, post.shifts)
+        shiftList.visibility = if (isExpanded) View.GONE else View.VISIBLE
+        addShift.visibility = View.GONE
+
+        postCard.setOnClickListener {
+            isExpanded = !isExpanded
+            adapter.notifyDataSetChanged()
+        }
+    }
+
+    fun bindEmpty(adapter: PostsAdapter) {
+        postName.setText("")
+        sufferingLevel.setText("0")
+        postName.hint = "שם עמדה"
+        addShift.setOnClickListener {
+            adapter.posts.add(Post())
+            adapter.notifyDataSetChanged()
+        }
+    }
 }
