@@ -3,8 +3,9 @@ package com.talido.samalto.model.data.assigned
 import com.talido.samalto.model.data.Guard
 import com.talido.samalto.model.data.Post
 import com.talido.samalto.model.data.Shift
+import java.util.*
 
-class Schedule(posts: List<Post>, guards: List<Guard>) {
+class Schedule(val startTime: Calendar, posts: List<Post>, guards: List<Guard>) {
     val posts: List<AssignedPost> = posts.map { AssignedPost(it.name) }
     val guards: List<AssignedGuard> = guards.map { AssignedGuard(it.name) }
 

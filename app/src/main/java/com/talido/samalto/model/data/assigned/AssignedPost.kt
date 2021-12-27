@@ -1,13 +1,13 @@
 package com.talido.samalto.model.data.assigned
 
-import java.time.LocalTime
+import java.util.*
 
 class AssignedPost(val name: String) {
     val shifts: MutableList<AssignedShift> = mutableListOf()
 
-    fun addShift(startTime: LocalTime, endTime: LocalTime, guard: AssignedGuard) {
-        val shiftBefore = guard.shifts.first { it.startTime.compareTo(startTime) > 0 }
-        if (shiftBefore.endTime.compareTo(startTime) < 0) {
+    fun addShift(startTime: Calendar, endTime: Calendar, guard: AssignedGuard) {
+        val shiftBefore = guard.shifts.first { startTime.after(it.startTime) }
+        if (startTime.before(shiftBefore.endTime)) {
             throw ShiftAdditionException()
         }
 
