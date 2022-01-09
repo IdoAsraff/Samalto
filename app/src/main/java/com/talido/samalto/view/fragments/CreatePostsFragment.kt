@@ -34,6 +34,7 @@ class CreatePostsFragment : Fragment() {
 
         binding.postsList.layoutManager = LinearLayoutManager(this.requireContext())
         binding.postsList.itemAnimator = DefaultItemAnimator()
+//        binding.postsList.itemAnimator = null
         val testList = mutableListOf(Post("פטרול", 3), Post("כפתורים", 4))
         val startTime = Calendar.getInstance()
         val endTime = Calendar.getInstance()
