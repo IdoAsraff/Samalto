@@ -43,7 +43,7 @@ class DescriptionTextCreator {
     private fun shiftTimeToString(time: Calendar): String {
         val minutesField = time.get(Calendar.MINUTE).toString().padStart(2, '0')
         val dayField = toHebrewDay(time.get(Calendar.DAY_OF_WEEK))
-        val hourField = time.get(Calendar.HOUR)
+        val hourField = time.get(Calendar.HOUR_OF_DAY)
         return "$dayField $hourField:$minutesField"
     }
 

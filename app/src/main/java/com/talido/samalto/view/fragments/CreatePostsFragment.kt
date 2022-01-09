@@ -29,20 +29,24 @@ class CreatePostsFragment : Fragment() {
             findNavController().popBackStack()
         }
         binding.next.setOnClickListener {
+            (activity as ScheduleActivity).posts = Optional.of((binding.postsList.adapter as PostsAdapter).adapterPosts.toList())
             findNavController().navigate(CreatePostsFragmentDirections.actionCreatePostsFragmentToGuardsAmountFragment())
         }
 
         binding.postsList.layoutManager = LinearLayoutManager(this.requireContext())
         binding.postsList.itemAnimator = DefaultItemAnimator()
-//        binding.postsList.itemAnimator = null
         val testList = mutableListOf(Post("פטרול", 3), Post("כפתורים", 4))
         val startTime = Calendar.getInstance()
         val endTime = Calendar.getInstance()
-        startTime[Calendar.HOUR_OF_DAY] = 10
-        startTime[Calendar.MINUTE] = 10
-        endTime[Calendar.HOUR_OF_DAY] = 11
-        endTime[Calendar.MINUTE] = 11
+        startTime[Calendar.HOUR_OF_DAY] = 15
+        startTime[Calendar.MINUTE] = 15
+        endTime[Calendar.HOUR_OF_DAY] = 17
+        endTime[Calendar.MINUTE] = 15
         testList[0].addShift(startTime, endTime)
+        val otherEndTime = Calendar.getInstance()
+        otherEndTime [Calendar.HOUR_OF_DAY] = 19
+        otherEndTime[Calendar.MINUTE] = 15
+        testList[0].addShift(endTime, otherEndTime)
         binding.postsList.adapter = PostsAdapter(binding.root.context, testList)
         return binding.root
     }

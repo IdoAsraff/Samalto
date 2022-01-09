@@ -19,6 +19,7 @@
             android:id="@+id/descriptionTypeSpinner"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
             android:layout_width="match_parent"
+            android:visibility="invisible"
             android:layout_height="wrap_content">
 
             <AutoCompleteTextView
@@ -51,6 +52,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:lines="@android:integer/config_longAnimTime"
+        android:textColor="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
