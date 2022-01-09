@@ -33,23 +33,15 @@ class PostsAdapter(val context: Context, var posts: MutableList<Post>) :
             postHolder.bindPost(posts[position], this)
         }
 
-        postHolder.postName.setOnFocusChangeListener { view, hasFocus ->
-            if (!hasFocus) {
-                posts[position].name = postHolder.postName.text.toString()
-            }
+        postHolder.postName.doAfterTextChanged {
+            posts[position].name = postHolder.postName.text.toString()
         }
 
         postHolder.sufferingLevel.hint = position.toString()
-        postHolder.sufferingLevel.setOnFocusChangeListener { view, hasFocus ->
-            if (!hasFocus) {
-                val inputSuffering =  postHolder.sufferingLevel.text.toString()
-                posts[position].sufferingLevel = if (inputSuffering != "") inputSuffering.toInt() else 0
-            }
+        postHolder.sufferingLevel.doAfterTextChanged {
+            val inputSuffering =  postHolder.sufferingLevel.text.toString()
+            posts[position].sufferingLevel = if (inputSuffering != "") inputSuffering.toInt() else 0
         }
-    }
-
-    fun updatePosts() {
-
     }
 
     override fun getItemCount(): Int {
