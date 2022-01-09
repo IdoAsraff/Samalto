@@ -7,28 +7,26 @@ import android.view.ViewGroup
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
 import com.talido.samalto.R
+import com.talido.samalto.model.data.Post
 import com.talido.samalto.model.data.Shift
 import java.util.*
 
-class ShiftAdapter(val context: Context, val shifts: MutableList<Shift>) :
+class ShiftAdapter(val context: Context, val startTime: Calendar, val postName: String, val shifts: MutableList<Shift>) :
     RecyclerView.Adapter<ShiftHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShiftHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.shift_card, parent, false)
         return ShiftHolder(view)
     }
 
     override fun onBindViewHolder(holder: ShiftHolder, position: Int) {
-        with (shifts[position]) {
-            holder.startTime.setText("${startTime[Calendar.HOUR_OF_DAY]}:${startTime[Calendar.MINUTE]}")
-            holder.endTime.setText("${endTime[Calendar.HOUR_OF_DAY]}:${endTime[Calendar.MINUTE]}")
-        }
+        if (position == shifts.size)
+            holder.bindAddShift(this)
+        else
+            holder.bindShift(shifts[position])
     }
 
     override fun getItemCount(): Int {
-        return shifts.size
+        return shifts.size + 1
     }
-}
-class ShiftHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    val startTime: EditText = itemView.findViewById(R.id.startTime)
-    val endTime: EditText = itemView.findViewById(R.id.endTime)
 }

@@ -47,7 +47,7 @@ class CreatePostsFragment : Fragment() {
         otherEndTime [Calendar.HOUR_OF_DAY] = 19
         otherEndTime[Calendar.MINUTE] = 15
         testList[0].addShift(endTime, otherEndTime)
-        binding.postsList.adapter = PostsAdapter(binding.root.context, testList)
+        binding.postsList.adapter = PostsAdapter(binding.root.context, (activity as ScheduleActivity).startTime.get(), testList)
         return binding.root
     }
 }
