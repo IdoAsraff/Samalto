@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.view.animation.LinearInterpolator
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.talido.samalto.databinding.FragmentCreatePostsBinding
 import com.talido.samalto.view.ScheduleActivity
@@ -32,6 +33,7 @@ class CreatePostsFragment : Fragment() {
         }
 
         binding.postsList.layoutManager = LinearLayoutManager(this.requireContext())
+        binding.postsList.itemAnimator = DefaultItemAnimator()
         val testList = mutableListOf(Post("פטרול", 3), Post("כפתורים", 4))
         val startTime = Calendar.getInstance()
         val endTime = Calendar.getInstance()

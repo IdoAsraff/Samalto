@@ -83,9 +83,11 @@ class PostHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         postName.setText("")
         sufferingLevel.setText("0")
         postName.hint = "שם עמדה"
+        addShift.visibility = View.VISIBLE
         addShift.setOnClickListener {
             adapter.posts.add(Post())
-            adapter.notifyDataSetChanged()
+            adapter.notifyItemChanged(adapter.posts.size - 2) // Remove + from last item
+            adapter.notifyItemInserted(adapter.posts.size - 1) // Add new item
         }
     }
 }
