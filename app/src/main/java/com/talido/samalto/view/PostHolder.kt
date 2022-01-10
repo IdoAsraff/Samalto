@@ -2,10 +2,12 @@ package com.talido.samalto.view
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
+import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.talido.samalto.R
@@ -17,40 +19,34 @@ class PostHolder(itemView: View, adapter: PostsAdapter) : RecyclerView.ViewHolde
     val shiftList: RecyclerView = itemView.findViewById(R.id.shiftsList)
     val addShift: ImageView = itemView.findViewById(R.id.addPost)
     val expand: ImageView = itemView.findViewById(R.id.expand)
+    var currentPosition: Int? = null
 
     // Listeners
-    val updatePostName = object : PositionableTextWatcher() {
-        override fun afterTextChanged(inputName: Editable?) {
-            if (position != null) {
-                adapter.adapterPosts[position!!].name = inputName.toString()
+    init {
+        etName.doAfterTextChanged {
+            if (currentPosition != null) {
+                adapter.adapterPosts[currentPosition!!].name = it.toString()
+                Log.d("TAL_DEBUG", "Updating $currentPosition to ${it.toString()}")
             }
         }
-    }
-    val updatePostSuffering = object : PositionableTextWatcher() {
-        override fun afterTextChanged(text: Editable?) {
-            val inputSuffering = etSufferingLevel.text.toString()
-            if (position != null) {
-                adapter.adapterPosts[position!!].sufferingLevel =
+
+        etSufferingLevel.doAfterTextChanged {
+            val inputSuffering = it.toString()
+            if (currentPosition != null) {
+                adapter.adapterPosts[currentPosition!!].sufferingLevel =
                     if (inputSuffering != "") inputSuffering.toInt() else 0
             }
         }
     }
 
-    init {
-        etName.addTextChangedListener(updatePostName)
-        etSufferingLevel.addTextChangedListener(updatePostSuffering)
-    }
-
     fun bindPost(adapter: PostsAdapter, position: Int) {
+        currentPosition = position
         val post = adapter.adapterPosts[position]
 
         // Set fields
         etName.setText(post.name)
         etSufferingLevel.setText(post.sufferingLevel.toString())
-
-        // Set field listeners
-        updatePostName.position = position
-        updatePostSuffering.position = position
+        Log.d("TAL_DEBUG", "Binding $position, currently ${etName.text}")
 
         // Set Shift list
         shiftList.layoutManager = LinearLayoutManager(postCard.context)
@@ -86,11 +82,5 @@ class PostHolder(itemView: View, adapter: PostsAdapter) : RecyclerView.ViewHolde
             adapter.notifyItemChanged(adapter.adapterPosts.size - 1) // Remove + from last item
             adapter.notifyItemInserted(adapter.adapterPosts.size) // Add new empty item
         }
-    }
-
-    abstract class PositionableTextWatcher : TextWatcher {
-        var position: Int? = null
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
     }
 }
