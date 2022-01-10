@@ -35,18 +35,26 @@ class CreatePostsFragment : Fragment() {
 
         binding.postsList.layoutManager = LinearLayoutManager(this.requireContext())
         binding.postsList.itemAnimator = DefaultItemAnimator()
-        val testList = mutableListOf(Post("פטרול", 3), Post("כפתורים", 4))
-        val startTime = Calendar.getInstance()
-        val endTime = Calendar.getInstance()
-        startTime[Calendar.HOUR_OF_DAY] = 15
-        startTime[Calendar.MINUTE] = 15
-        endTime[Calendar.HOUR_OF_DAY] = 17
-        endTime[Calendar.MINUTE] = 15
-        testList[0].addShift(startTime, endTime)
-        val otherEndTime = Calendar.getInstance()
-        otherEndTime [Calendar.HOUR_OF_DAY] = 19
-        otherEndTime[Calendar.MINUTE] = 15
-        testList[0].addShift(endTime, otherEndTime)
+        // Sample data
+        var testList = mutableListOf<Post>()
+        if (!(activity as ScheduleActivity).posts.isPresent) {
+            testList.addAll(mutableListOf(Post("פטרול", 3), Post("כפתורים", 4)))
+            val startTime = Calendar.getInstance()
+            val endTime = Calendar.getInstance()
+            startTime[Calendar.HOUR_OF_DAY] = 15
+            startTime[Calendar.MINUTE] = 15
+            endTime[Calendar.HOUR_OF_DAY] = 17
+            endTime[Calendar.MINUTE] = 15
+            testList[0].addShift(startTime, endTime)
+            val otherEndTime = Calendar.getInstance()
+            otherEndTime [Calendar.HOUR_OF_DAY] = 19
+            otherEndTime[Calendar.MINUTE] = 15
+            testList[0].addShift(endTime, otherEndTime)
+        } else {
+            testList.addAll((activity as ScheduleActivity).posts.get())
+        }
+
+        // Sample data
         binding.postsList.adapter = PostsAdapter(binding.root.context, (activity as ScheduleActivity).startTime.get(), testList)
         return binding.root
     }

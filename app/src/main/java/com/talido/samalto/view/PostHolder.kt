@@ -1,7 +1,5 @@
 package com.talido.samalto.view
 
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
@@ -50,7 +48,8 @@ class PostHolder(itemView: View, adapter: PostsAdapter) : RecyclerView.ViewHolde
 
         // Set Shift list
         shiftList.layoutManager = LinearLayoutManager(postCard.context)
-        shiftList.adapter = ShiftAdapter(postCard.context, adapter.startTime, post.name, post.shifts)
+        shiftList.adapter =
+            ShiftAdapter(postCard.context, adapter.startTime, post.name, post.shifts)
         shiftList.visibility = if (post.isExpanded) View.VISIBLE else View.GONE
         addShift.visibility = View.GONE
 
@@ -80,7 +79,7 @@ class PostHolder(itemView: View, adapter: PostsAdapter) : RecyclerView.ViewHolde
             )
             adapter.adapterPosts.add(AdapterPost(newPost))
             adapter.notifyItemChanged(adapter.adapterPosts.size - 1) // Remove + from last item
-            adapter.notifyItemInserted(adapter.adapterPosts.size ) // Add new empty item
+            adapter.notifyItemInserted(adapter.adapterPosts.size) // Add new empty item
         }
     }
 }

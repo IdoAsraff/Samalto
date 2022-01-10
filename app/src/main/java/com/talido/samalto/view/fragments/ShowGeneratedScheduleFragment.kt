@@ -42,5 +42,6 @@ class ShowGeneratedScheduleFragment : Fragment() {
         val scheduleActivity = requireActivity() as ScheduleActivity
         schedule = scheduler.schedule(scheduleActivity.posts.get(), scheduleActivity.guards.get())
         binding.generatedScheduleText.text = descriptionTextCreationFunc(schedule)
+        binding.postsTest.text = (activity as ScheduleActivity).posts.get().toString()
     }
 }
