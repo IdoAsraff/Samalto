@@ -40,8 +40,8 @@ class PostHolder(itemView: View, adapter: PostsAdapter) : RecyclerView.ViewHolde
     }
 
     fun bindPost(adapter: PostsAdapter, position: Int) {
-        currentPosition = position
         val post = adapter.adapterPosts[position]
+        currentPosition = position
 
         // Set fields
         etName.setText(post.name)
@@ -80,7 +80,7 @@ class PostHolder(itemView: View, adapter: PostsAdapter) : RecyclerView.ViewHolde
             )
             adapter.adapterPosts.add(AdapterPost(newPost))
             adapter.notifyItemChanged(adapter.adapterPosts.size - 1) // Remove + from last item
-            adapter.notifyItemInserted(adapter.adapterPosts.size) // Add new empty item
+            adapter.notifyItemInserted(adapter.adapterPosts.size ) // Add new empty item
         }
     }
 }
