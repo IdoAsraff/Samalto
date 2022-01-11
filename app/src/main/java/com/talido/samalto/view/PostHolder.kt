@@ -77,8 +77,10 @@ class PostHolder(itemView: View, val adapter: PostsAdapter) : RecyclerView.ViewH
                 etName.text.toString(),
                 if (inputSuffering != "") inputSuffering.toInt() else 0
             )
-            adapter.adapterPosts.add(AdapterPost(newPost))
-            adapter.notifyItemChanged(adapter.adapterPosts.size - 1) // Remove + from last item
+            newPost.isExpanded = true
+            adapter.adapterPosts.add(newPost)
+            postCard.clearFocus()
+            adapter.notifyItemChanged(adapter.adapterPosts.size - 1) // Remove + from added item
             adapter.notifyItemInserted(adapter.adapterPosts.size) // Add new empty item
         }
     }
