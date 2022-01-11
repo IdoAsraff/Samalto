@@ -33,9 +33,9 @@ class PostsAdapter(val context: Context, val startTime: Calendar, var posts: Mut
 
     override fun onBindViewHolder(postHolder: PostHolder, position: Int) {
         if (position == adapterPosts.size) {
-            postHolder.bindAddPost(this)
+            postHolder.bindAddPost()
         } else {
-            postHolder.bindPost(this, position)
+            postHolder.bindPost(position)
         }
     }
 

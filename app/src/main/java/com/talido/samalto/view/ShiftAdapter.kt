@@ -16,14 +16,14 @@ class ShiftAdapter(val context: Context, val startTime: Calendar, val postName: 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShiftHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.shift_card, parent, false)
-        return ShiftHolder(view)
+        return ShiftHolder(this, view)
     }
 
     override fun onBindViewHolder(holder: ShiftHolder, position: Int) {
         if (position == shifts.size)
-            holder.bindAddShift(this)
+            holder.bindAddShift()
         else
-            holder.bindShift(shifts[position])
+            holder.bindShift(position)
     }
 
     override fun getItemCount(): Int {

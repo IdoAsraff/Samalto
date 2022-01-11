@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.talido.samalto.R
 
-class PostHolder(itemView: View, adapter: PostsAdapter) : RecyclerView.ViewHolder(itemView) {
+class PostHolder(itemView: View, val adapter: PostsAdapter) : RecyclerView.ViewHolder(itemView) {
     val postCard: CardView = itemView.findViewById(R.id.postCard)
     val etSufferingLevel: EditText = itemView.findViewById(R.id.sufferingLevel)
     val etName: EditText = itemView.findViewById(R.id.postName)
     val shiftList: RecyclerView = itemView.findViewById(R.id.shiftsList)
-    val addShift: ImageView = itemView.findViewById(R.id.addPost)
+    val addPost: ImageView = itemView.findViewById(R.id.addPost)
     val expand: ImageView = itemView.findViewById(R.id.expand)
     var currentPosition: Int? = null
 
@@ -37,7 +37,7 @@ class PostHolder(itemView: View, adapter: PostsAdapter) : RecyclerView.ViewHolde
         }
     }
 
-    fun bindPost(adapter: PostsAdapter, position: Int) {
+    fun bindPost(position: Int) {
         val post = adapter.adapterPosts[position]
         currentPosition = position
 
@@ -51,7 +51,7 @@ class PostHolder(itemView: View, adapter: PostsAdapter) : RecyclerView.ViewHolde
         shiftList.adapter =
             ShiftAdapter(postCard.context, adapter.startTime, post.name, post.shifts)
         shiftList.visibility = if (post.isExpanded) View.VISIBLE else View.GONE
-        addShift.visibility = View.GONE
+        addPost.visibility = View.GONE
 
         // Expand
         expand.visibility = View.VISIBLE
@@ -65,13 +65,13 @@ class PostHolder(itemView: View, adapter: PostsAdapter) : RecyclerView.ViewHolde
         }
     }
 
-    fun bindAddPost(adapter: PostsAdapter) {
+    fun bindAddPost() {
         etName.setText("")
         etSufferingLevel.setText("0")
         etName.hint = "שם עמדה"
-        addShift.visibility = View.VISIBLE
+        addPost.visibility = View.VISIBLE
         expand.visibility = View.GONE
-        addShift.setOnClickListener {
+        addPost.setOnClickListener {
             val inputSuffering = etSufferingLevel.text.toString()
             val newPost = AdapterPost(
                 etName.text.toString(),
