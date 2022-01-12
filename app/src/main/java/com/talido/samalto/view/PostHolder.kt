@@ -44,7 +44,6 @@ class PostHolder(itemView: View, val adapter: PostsAdapter) : RecyclerView.ViewH
         // Set fields
         etName.setText(post.name)
         etSufferingLevel.setText(post.sufferingLevel.toString())
-        Log.d("TAL_DEBUG", "Binding $position, currently ${etName.text}")
 
         // Set Shift list
         shiftList.layoutManager = LinearLayoutManager(postCard.context)

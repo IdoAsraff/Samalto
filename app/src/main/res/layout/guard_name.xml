@@ -14,7 +14,7 @@
     app:boxStrokeColor="@color/colorPrimary">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/name"
+        android:id="@+id/guardName"
         android:layout_width="match_parent"
         android:singleLine="true"
         android:maxLines="1"
