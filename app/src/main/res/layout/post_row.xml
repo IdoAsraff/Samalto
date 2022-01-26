@@ -53,6 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
+                    android:textColorHint="@color/textColorSecondary"
                     android:textColor="@color/textColorPrimary"
                     android:text="זמני"
                     android:textSize="24sp" />

@@ -9,6 +9,7 @@
     <color name="colorSecondaryVariant">#c78300</color>
     <color name="colorOnSecondary">#ffe455</color>
     <color name="textColorPrimary">#A9000000</color>
+    <color name="textColorSecondary">#56000000</color>
     <color name="textColorDisabled">#61000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#d6cbb2</color>
